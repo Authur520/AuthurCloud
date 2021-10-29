@@ -11,10 +11,11 @@
     <modules>
         <module>authur-common</module>
         <module>authur-register</module>
+        <module>authur-auth</module>
     </modules>
 
-    <name>ALB-Cloud</name>
-    <description>ALB-Cloud：Spring Cloud，Spring Security OAuth2 微服务权限管理系统</description>
+    <name>Authur-Cloud</name>
+    <description>Authur-Cloud：Spring Cloud，Spring Security OAuth2 微服务权限管理系统</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

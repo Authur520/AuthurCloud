@@ -10,8 +10,8 @@
     </parent>
 
     <artifactId>authur-register</artifactId>
-    <name>authur-register</name>
-    <description>ALB-Cloud服务注册中心</description>
+    <name>Authur-Register</name>
+    <description>Authur-Cloud服务注册中心</description>
 
     <dependencies>
         <dependency>
