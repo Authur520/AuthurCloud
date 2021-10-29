@@ -1,0 +1,31 @@
+server:
+  port: 8301
+spring:
+  application:
+    name: Authur-Gateway
+#Eureka相关
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 20
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    instance-info-replication-interval-seconds: 30
+    registry-fetch-interval-seconds: 3
+    serviceUrl:
+      defaultZone: http://Authur:ljb@localhost:8001/register/eureka/
+#网管相关
+zuul:
+  routes:
+    auth:
+      path: /auth/**
+      serviceId: Authur-Auth
+      sensitiveHeaders: "*"
+  retryable: true
+  ignored-services: "*"
+  ribbon:
+    eager-load:
+      enabled: true
+#请求超时
+ribbon:
+  ReadTimeout: 3000

@@ -12,6 +12,7 @@
         <module>authur-common</module>
         <module>authur-register</module>
         <module>authur-auth</module>
+        <module>authur-gateway</module>
     </modules>
 
     <name>Authur-Cloud</name>

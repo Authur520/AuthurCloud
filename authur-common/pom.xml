@@ -10,7 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>authur-common</artifactId>
-
     <name>Authur-Common</name>
     <description>Authur-Common通用模块</description>
 
