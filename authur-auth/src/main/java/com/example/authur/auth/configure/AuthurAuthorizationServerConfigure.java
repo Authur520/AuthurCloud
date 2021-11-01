@@ -57,6 +57,7 @@ public class AuthurAuthorizationServerConfigure extends AuthorizationServerConfi
         }
     }
 
+    //注入配置
     @Override
     @SuppressWarnings("all")
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
