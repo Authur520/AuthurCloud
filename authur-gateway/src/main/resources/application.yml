@@ -21,6 +21,14 @@ zuul:
       path: /auth/**
       serviceId: Authur-Auth
       sensitiveHeaders: "*"
+    system:
+      path: /system/**
+      serviceId: Authur-Server-System
+      sensitiveHeaders: "*"
+      test:
+        path: /test/**
+        serviceId: Authur-Server-Test
+        sensitiveHeaders: "*"
   retryable: true
   ignored-services: "*"
   ribbon:
