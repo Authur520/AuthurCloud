@@ -23,11 +23,8 @@ public class AuthurSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthurUserDetailService userDetailService;
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Bean
     @Override
@@ -48,6 +45,6 @@ public class AuthurSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder);
     }
 }

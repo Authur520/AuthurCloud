@@ -16,12 +16,9 @@ import com.example.authur.server.test.service.IHelloService;
 public class HelloServiceFallback implements FallbackFactory<IHelloService> {
     @Override
     public IHelloService create(Throwable throwable) {
-        return new IHelloService() {//可以改写成函数式接口（原因：只有一个抽象方法）
-            @Override
-            public String hello(String name) {
-                log.error("调用Authur-Server-System服务出错", throwable);
-                return "调用出错";
-            }
+        return name -> {
+            log.error("调用Authur-Server-System服务出错", throwable);
+            return "调用出错";
         };
     }
 

@@ -22,4 +22,6 @@ security:
       user-info-uri: http://localhost:8301/auth/user
 feign:
   hystrix:
-    enabled: true
+    enabled: true #Feign回退生效
+hystrix:
+  shareSecurityContext: true
