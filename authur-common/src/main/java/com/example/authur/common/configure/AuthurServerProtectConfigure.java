@@ -17,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class AuthurServerProtectConfigure implements WebMvcConfigurer {
 
     @Bean
-    @ConditionalOnMissingBean(PasswordEncoder.class)
+    @ConditionalOnMissingBean(value = PasswordEncoder.class)
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }

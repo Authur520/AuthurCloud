@@ -21,8 +21,10 @@ public class AuthurServerProtectInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
+        // 从请求头中获取 Zuul Token
         String token = request.getHeader(AuthurConstant.ZUUL_TOKEN_HEADER);
         String zuulToken = new String(Base64Utils.encode((AuthurConstant.ZUUL_TOKEN_VALUE).getBytes()));
+        // 验证 Zuul Token 的正确性
         if (StringUtils.equals(zuulToken, token)){
             return true;
         }else {

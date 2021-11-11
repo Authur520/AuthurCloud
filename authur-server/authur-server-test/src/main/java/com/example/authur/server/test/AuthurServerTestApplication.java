@@ -1,6 +1,9 @@
 package com.example.authur.server.test;
 
 import com.example.authur.common.annotation.AuthurCloudApplication;
+import com.example.authur.common.annotation.EnableAuthurAuthExceptionHandler;
+import com.example.authur.common.annotation.EnableAuthurOauth2FeignClient;
+import com.example.authur.common.annotation.EnableAuthurServerProtect;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -15,8 +18,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 @AuthurCloudApplication
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class AuthurServerTestApplication {
     public static void main(String[] args) {
         SpringApplication.run(AuthurServerTestApplication.class, args);

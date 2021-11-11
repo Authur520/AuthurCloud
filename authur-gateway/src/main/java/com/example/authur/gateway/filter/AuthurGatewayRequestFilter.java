@@ -3,7 +3,6 @@ package com.example.authur.gateway.filter;
 import com.example.authur.common.entity.AuthurConstant;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import com.netflix.zuul.exception.ZuulException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.stereotype.Component;
@@ -35,9 +34,9 @@ public class AuthurGatewayRequestFilter extends ZuulFilter {
     }
 
     @Override
-    public Object run() throws ZuulException {
+    public Object run(){
         RequestContext requestContext = RequestContext.getCurrentContext();
-        String serviceId = (String)requestContext.get(FilterConstants.SERVICE_ID_KEY);
+        String serviceId = (String) requestContext.get(FilterConstants.SERVICE_ID_KEY);
         HttpServletRequest request = requestContext.getRequest();
         String host = request.getRemoteHost();
         String method = request.getMethod();
