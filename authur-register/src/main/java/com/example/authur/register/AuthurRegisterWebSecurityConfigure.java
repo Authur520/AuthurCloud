@@ -5,7 +5,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * @Description: Security验证
+ * @Description: Security验证注释mac
  * @Author: jibing.Li
  * @Date: 2021/10/27 18:15
  */
