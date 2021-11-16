@@ -7,7 +7,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 /**
- * @Description:
+ * @Description: 跨域处理
  * @Author: jibing.Li
  * @Date: 2021/11/1 17:54
  */
