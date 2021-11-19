@@ -2,7 +2,6 @@ package com.example.authur.common.handler;
 
 import com.example.authur.common.entity.AuthurResponse;
 import com.example.authur.common.utils.AuthurUtils;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
