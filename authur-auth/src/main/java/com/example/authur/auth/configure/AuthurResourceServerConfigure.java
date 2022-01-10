@@ -1,6 +1,6 @@
 package com.example.authur.auth.configure;
 
-import com.example.authur.common.configure.AuthurAuthExceptionConfigure;
+
 import com.example.authur.common.handler.AuthurAccessDeniedHandler;
 import com.example.authur.common.handler.AuthurAuthExceptionEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
