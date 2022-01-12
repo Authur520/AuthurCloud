@@ -1,7 +1,9 @@
 package com.example.authur.auth.controller;
 
+import com.example.authur.auth.service.ValidateCodeService;
 import com.example.authur.common.AuthurAuthException;
 import com.example.authur.common.entity.AuthurResponse;
+import com.example.authur.common.exception.ValidateCodeException;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.security.Principal;
 
 /**
@@ -21,6 +25,9 @@ import java.security.Principal;
 public class SecurityController {
     @Autowired
     ConsumerTokenServices consumerTokenServices;
+
+    @Autowired
+    private ValidateCodeService validateCodeService;
 
     /**
      * 可以看到，虽然我们在请求头中已经带上了正确的令牌，但是并没有成功获取到资源，正如前面所说的那样，/oauth/开头的请求
@@ -48,4 +55,10 @@ public class SecurityController {
         }
         return authurResponse.message("退出登录成功");
     }
+
+    @GetMapping
+    public void captcha(HttpServletRequest request, HttpServletResponse response) throws IOException, ValidateCodeException {
+        validateCodeService.create(request, response);
+    }
+
 }

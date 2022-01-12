@@ -1,6 +1,7 @@
 package com.example.authur.auth;
 
 import com.example.authur.common.annotation.EnableAuthurAuthExceptionHandler;
+import com.example.authur.common.annotation.EnableAuthurLettuceRedis;
 import com.example.authur.common.annotation.EnableAuthurServerProtect;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.annotation.MapperScans;
@@ -12,6 +13,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 @EnableAuthurAuthExceptionHandler
 @EnableAuthurServerProtect
+@EnableAuthurLettuceRedis
 @MapperScan("com.example.authur.auth.mapper")
 public class AuthurAuthApplication {
 
