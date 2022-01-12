@@ -6,7 +6,7 @@
         <artifactId>authur-cloud</artifactId>
         <groupId>com.li.authur</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../authur-cloud/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
