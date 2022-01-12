@@ -1,5 +1,6 @@
 package com.example.authur.auth.configure;
 
+import com.example.authur.auth.filter.ValidateCodeFilter;
 import com.example.authur.auth.service.AuthurUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * @Description:
@@ -24,6 +26,8 @@ public class AuthurSecurityConfigure extends WebSecurityConfigurerAdapter {
     private AuthurUserDetailService userDetailService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private ValidateCodeFilter validateCodeFilter;
 
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -32,7 +36,8 @@ public class AuthurSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatchers()
+        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class).
+                requestMatchers()
                 .antMatchers("/oauth/**")
                 .and()
                 .authorizeRequests()
