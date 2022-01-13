@@ -27,5 +27,5 @@ public class AuthurConstant {
     /**
      * 验证码 key前缀
      */
-    public static final String CODE_PREFIX = "febs.captcha.";
+    public static final String CODE_PREFIX = "authur.captcha.";
 }

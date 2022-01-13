@@ -6,7 +6,7 @@ spring:
     name: Authur-Auth
   redis:
     database: 0
-    host: localhost
+    host: 81.70.92.153
     port: 6379
     lettuce:
       pool:

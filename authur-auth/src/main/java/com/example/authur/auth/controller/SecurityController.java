@@ -56,7 +56,7 @@ public class SecurityController {
         return authurResponse.message("退出登录成功");
     }
 
-    @GetMapping
+    @GetMapping("captcha")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws IOException, ValidateCodeException {
         validateCodeService.create(request, response);
     }
