@@ -1,11 +1,14 @@
 package com.example.authur.auth.filter;
 
 import com.example.authur.auth.service.ValidateCodeService;
+import com.example.authur.common.entity.AuthurResponse;
 import com.example.authur.common.exception.ValidateCodeException;
+import com.example.authur.common.utils.AuthurUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.stereotype.Component;
@@ -37,9 +40,12 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
                 validateCode(httpServletRequest);
                 filterChain.doFilter(httpServletRequest, httpServletResponse);
             } catch (ValidateCodeException e) {
-                e.printStackTrace();
+                AuthurResponse authurResponse = new AuthurResponse();
+                AuthurUtils.makeResponse(httpServletResponse, MediaType.APPLICATION_JSON_UTF8_VALUE, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, authurResponse.message(e.getMessage()));
+                log.error(e.getMessage(), e);
             }
-
+        }else {
+            filterChain.doFilter(httpServletRequest, httpServletResponse);
         }
     }
 

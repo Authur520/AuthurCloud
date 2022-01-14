@@ -36,8 +36,8 @@ public class AuthurSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class).
-                requestMatchers()
+        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+                .requestMatchers()
                 .antMatchers("/oauth/**")
                 .and()
                 .authorizeRequests()
