@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * @Description:
@@ -59,14 +60,15 @@ public class ValidateCodeService {
      * @throws ValidateCodeException
      */
     public void check(String key, String value) throws ValidateCodeException {
-        String codeInRedis = String.valueOf(redisService.get(AuthurConstant.CODE_PREFIX + key));
+        Object codeInRedis = redisService.get(AuthurConstant.CODE_PREFIX + key);
+
         if (StringUtils.isBlank(value)){
             throw new ValidateCodeException("请输入验证码");
         }
-        if (StringUtils.isBlank(codeInRedis)){
+        if (codeInRedis == null){
             throw new ValidateCodeException("验证码已过期");
         }
-        if (StringUtils.equalsIgnoreCase(value,codeInRedis)){
+        if (!StringUtils.equalsIgnoreCase(value,String.valueOf(codeInRedis))){
             throw new ValidateCodeException("验证码不正确");
         }
 
@@ -92,6 +94,13 @@ public class ValidateCodeService {
         response.setHeader(HttpHeaders.PRAGMA, "No-cache");
         response.setHeader(HttpHeaders.CACHE_CONTROL, "no-cache");
         response.setDateHeader(HttpHeaders.EXPIRES, 0L);
+    }
+
+    public static void main(String[] args) {
+        String a = "null";
+        if (StringUtils.isEmpty(a)){
+            System.out.println("dengyu="+a);
+        }
     }
 
 }
