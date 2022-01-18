@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Optional;
 
 /**
  * @Description:
@@ -96,11 +95,5 @@ public class ValidateCodeService {
         response.setDateHeader(HttpHeaders.EXPIRES, 0L);
     }
 
-    public static void main(String[] args) {
-        String a = "null";
-        if (StringUtils.isEmpty(a)){
-            System.out.println("dengyu="+a);
-        }
-    }
 
 }

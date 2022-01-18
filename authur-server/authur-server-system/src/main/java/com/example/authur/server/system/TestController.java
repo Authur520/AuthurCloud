@@ -17,7 +17,7 @@ public class TestController {
         return "authur-server-system";
     }
 
-    @GetMapping("user")
+    @GetMapping("currentUser")
     public Principal currentUser(Principal principal) {
         return principal;
     }

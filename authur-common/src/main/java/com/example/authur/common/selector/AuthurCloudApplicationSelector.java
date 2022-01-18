@@ -1,6 +1,5 @@
 package com.example.authur.common.selector;
 
-import com.example.authur.common.AuthurAuthException;
 import com.example.authur.common.configure.AuthurAuthExceptionConfigure;
 import com.example.authur.common.configure.AuthurOAuth2FeignConfigure;
 import com.example.authur.common.configure.AuthurServerProtectConfigure;
