@@ -24,7 +24,6 @@ import java.util.Map;
  */
 
 @Slf4j
-@Validated
 @RestController
 @RequestMapping("user")
 public class UserController {
@@ -62,7 +61,7 @@ public class UserController {
             throw new AuthurException(message);
         }
     }
-
+    @Validated
     @DeleteMapping("/{userIds}")
     @PreAuthorize("hasAnyAuthority('user:delete')")
     public void deleteUsers(@NotBlank(message = "{required}") @PathVariable String userIds) throws AuthurException {
