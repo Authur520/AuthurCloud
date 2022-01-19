@@ -8,15 +8,17 @@ import com.example.authur.server.system.properties.AuthurSwaggerProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.OAuthBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
+import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -49,7 +51,10 @@ public class AuthurWebConfigure {
                 .apis(RequestHandlerSelectors.basePackage(swagger.getBasePackage()))
                 .paths(PathSelectors.any())
                 .build()
-                .apiInfo(apiInfo(swagger));
+                .apiInfo(apiInfo(swagger))
+                .securitySchemes(Collections.singletonList(securityScheme(swagger)))
+                .securityContexts(Collections.singletonList(securityContext(swagger)));
+
     }
 
     private ApiInfo apiInfo(AuthurSwaggerProperties swagger) {
@@ -61,4 +66,28 @@ public class AuthurWebConfigure {
                 new Contact(swagger.getAuthor(), swagger.getUrl(), swagger.getEmail()),
                 swagger.getLicense(), swagger.getLicenseUrl(), Collections.emptyList());
     }
+
+    private SecurityScheme securityScheme(AuthurSwaggerProperties swagger) {
+        GrantType grantType = new ResourceOwnerPasswordCredentialsGrant(swagger.getGrantUrl());
+
+        return new OAuthBuilder()
+                .name(swagger.getName())
+                .grantTypes(Collections.singletonList(grantType))
+                .scopes(Arrays.asList(scopes(swagger)))
+                .build();
+    }
+
+    private SecurityContext securityContext(AuthurSwaggerProperties swagger) {
+        return SecurityContext.builder()
+                .securityReferences(Collections.singletonList(new SecurityReference(swagger.getName(), scopes(swagger))))
+                .forPaths(PathSelectors.any())
+                .build();
+    }
+
+    private AuthorizationScope[] scopes(AuthurSwaggerProperties swagger) {
+        return new AuthorizationScope[]{
+                new AuthorizationScope(swagger.getScope(), "")
+        };
+    }
+
 }
