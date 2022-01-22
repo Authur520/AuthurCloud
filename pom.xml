@@ -14,6 +14,7 @@
         <module>authur-auth</module>
         <module>authur-gateway</module>
         <module>authur-server</module>
+        <module>authur-monitor</module>
     </modules>
 
     <name>Authur-Cloud</name>

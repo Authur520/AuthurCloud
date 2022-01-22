@@ -29,6 +29,7 @@ public class AuthurServerSystemResourceServerConfigure extends ResourceServerCon
                 .and()
                 .authorizeRequests()
                 .antMatchers(anonUrls).permitAll()
+                .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/**").authenticated();
     }
 }

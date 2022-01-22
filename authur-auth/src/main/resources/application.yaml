@@ -32,6 +32,26 @@ spring:
           password: lijibing123
           driver-class-name: com.mysql.cj.jdbc.Driver
           url: jdbc:mysql://81.70.92.153:3306/authur_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&useSSL=false
+  boot: #监控相关
+    admin:
+      client:
+        url: http://localhost:8401
+        username: Authur
+        password: ljb
+#监控相关
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
 
 eureka:
   instance:

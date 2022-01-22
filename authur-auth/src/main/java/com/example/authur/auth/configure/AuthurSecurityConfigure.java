@@ -41,6 +41,7 @@ public class AuthurSecurityConfigure extends WebSecurityConfigurerAdapter {
                 .antMatchers("/oauth/**")
                 .and()
                 .authorizeRequests()
+                .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/oauth/**").authenticated()
                 .and()
                 .csrf().disable();

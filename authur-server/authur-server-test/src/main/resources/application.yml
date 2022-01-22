@@ -6,6 +6,26 @@ spring:
     name: Authur-Server-Test
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration
+  boot: #监控相关
+    admin:
+      client:
+        url: http://localhost:8401
+        username: Authur
+        password: ljb
+#监控相关
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
 
 eureka:
   instance:
