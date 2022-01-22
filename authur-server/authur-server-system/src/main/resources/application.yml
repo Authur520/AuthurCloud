@@ -18,10 +18,10 @@ spring:
       primary: base
       datasource:
         base:
-          username: root
-          password: 123qwe
+          username: mysql
+          password: lijibing123
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/authur_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+          url: jdbc:mysql://81.70.92.153:3306/authur_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&useSSL=false
       p6spy: true #开发中建议打开，生产建议关闭
 mybatis-plus:
   type-aliases-package: com.example.authur.common.entity

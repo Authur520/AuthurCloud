@@ -31,7 +31,7 @@ spring:
           username: mysql
           password: lijibing123
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://81.70.92.153:3306/authur_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+          url: jdbc:mysql://81.70.92.153:3306/authur_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&useSSL=false
 
 eureka:
   instance:

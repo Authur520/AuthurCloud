@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @Description:
@@ -26,4 +28,27 @@ public class TestController {
     public String hello(String name){
         return "hello" + name;
     }
+
+
+    public static void main(String[] args) {
+//        ExecutorService threadPool = Executors.newSingleThreadExecutor();
+//        ExecutorService threadPool = Executors.newFixedThreadPool(5);
+        ExecutorService threadPool = Executors.newCachedThreadPool();
+        try{
+            for (int i = 0; i < 100; i++) {
+                threadPool.execute(() ->{
+                    System.out.println(Thread.currentThread().getName() + "    ok");
+                });
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            threadPool.shutdown();
+        }
+
+
+
+    }
+    
+
 }

@@ -1,34 +1,8 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Datasource local storage ignored files
-
-/dataSources.local.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-
-/.idea/
-/target/
-/.idea/libraries/
-/wechart-user/wechart-user.iml
-/wechart-user/user-intf/user-intf.iml
-/wechart-user/user-service/user-service.iml
-/wechart-server/wechart-server.iml
-/wechart-server/server-service/server-service.iml
-/wechart-server/server-intf/server-intf.iml
-/wechart-monitoring/wechart-monitoring.iml
-/wechart-monitoring/monitoring-service/monitoring-service.iml
-/wechart-monitoring/monitoring-intf/monitoring-intf.iml
-/wechart-data/wechart-data.iml
-/wechart-data/data-service/data-service.iml
-/wechart-data/data-intf/data-intf.iml
-/wechart-data/data-cache/data-cache.iml
-/wechart-bussiness/wechart-bussiness.iml
-/wechart-bussiness/bussiness-service/bussiness-service.iml
-/wechart-bussiness/bussiness-intf/bussiness-intf.iml
-/ubx-inventory/ubx-inventory.iml
-/ubx-inventory/inventory-service/inventory-service.iml
-/ubx-inventory/inventory-intf/inventory-intf.iml
-/service-gateway/service-gateway.iml
-/common/common.iml
-/.gradle/
+**/target/
+**/**/target/
+**/.idea/
+**/log/
+**/*.iml
+/authur-cloud/.txlcn/
+**/spy.log
+*/.DS_Store
