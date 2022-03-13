@@ -6,7 +6,7 @@ spring:
     name: Authur-Auth
   redis:
     database: 0
-    host: 81.70.92.153
+    host: ${redis.url}
     port: 6379
     password: 123456
     lettuce:
@@ -31,11 +31,11 @@ spring:
           username: mysql
           password: lijibing123
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://81.70.92.153:3306/authur_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&useSSL=false
+          url: jdbc:mysql://${mysql.url}:3306/authur_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&useSSL=false
   boot: #监控相关
     admin:
       client:
-        url: http://localhost:8401
+        url: http://${authur-monitor-admin}:8401
         username: Authur
         password: ljb
 #监控相关
@@ -62,7 +62,7 @@ eureka:
     instance-info-replication-interval-seconds: 30
     registry-fetch-interval-seconds: 3
     serviceUrl:
-      defaultZone: http://Authur:ljb@localhost:8001/register/eureka/
+      defaultZone: http://Authur:ljb@${authur-register}:8001/register/eureka/
 mybatis-plus:
   type-aliases-package: com.example.authur.common.entity
   mapper-locations: classpath:mapper/*.xml

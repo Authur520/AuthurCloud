@@ -13,7 +13,7 @@ spring:
   boot: #监控相关
     admin:
       client:
-        url: http://localhost:8401
+        url: http://${authur-monitor-admin}:8401
         username: Authur
         password: ljb
 #监控相关
@@ -33,7 +33,7 @@ management:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${authur-register}
   client:
     register-with-eureka: false
     fetch-registry: false

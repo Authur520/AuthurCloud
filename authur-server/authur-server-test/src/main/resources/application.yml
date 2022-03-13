@@ -9,7 +9,7 @@ spring:
   boot: #监控相关
     admin:
       client:
-        url: http://localhost:8401
+        url: http://${authur-monitor-admin}:8401
         username: Authur
         password: ljb
 #监控相关
@@ -36,12 +36,12 @@ eureka:
     instance-info-replication-interval-seconds: 30
     registry-fetch-interval-seconds: 3
     serviceUrl:
-      defaultZone: http://Authur:ljb@localhost:8001/register/eureka/
+      defaultZone: http://Authur:ljb@${authur-register}:8001/register/eureka/
 security:
   oauth2:
     resource:
       id: ${spring.application.name}
-      user-info-uri: http://localhost:8301/auth/user
+      user-info-uri: http://${authur-gateway}:8301/auth/user
 feign:
   hystrix:
     enabled: true #Feign回退生效
