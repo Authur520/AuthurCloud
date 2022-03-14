@@ -1,10 +1,12 @@
 package com.example.authur.gateway.configure;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.cors.reactive.CorsWebFilter;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+import org.springframework.web.util.pattern.PathPatternParser;
 
 /**
  * @Description: 跨域处理
@@ -15,14 +17,14 @@ import org.springframework.web.filter.CorsFilter;
 public class AuthurGateWayCorsConfigure {
 
     @Bean
-    public CorsFilter corsFilter(){
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        final CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowCredentials(true);
-        configuration.addAllowedHeader(CorsConfiguration.ALL);
-        configuration.addAllowedOrigin(CorsConfiguration.ALL);
-        configuration.addAllowedMethod(CorsConfiguration.ALL);
-        source.registerCorsConfiguration("/**", configuration);
-        return new CorsFilter(source);
+    public CorsWebFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
+        CorsConfiguration cors = new CorsConfiguration();
+        cors.setAllowCredentials(true);
+        cors.addAllowedOrigin(CorsConfiguration.ALL);
+        cors.addAllowedHeader(CorsConfiguration.ALL);
+        cors.addAllowedMethod(CorsConfiguration.ALL);
+        source.registerCorsConfiguration("/**", cors);
+        return new CorsWebFilter(source);
     }
 }

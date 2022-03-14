@@ -3,28 +3,12 @@ server:
 spring:
   application:
     name: Authur-Gateway
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   boot: #监控相关
     admin:
       client:
         url: http://${authur-monitor-admin}:8401
         username: Authur
         password: ljb
-#监控相关
-info:
-  app:
-    name: ${spring.application.name}
-    description: "@project.description@"
-    version: "@project.version@"
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  endpoint:
-    health:
-      show-details: always
 
 #Eureka相关
 eureka:
@@ -38,25 +22,50 @@ eureka:
     serviceUrl:
       defaultZone: http://Authur:ljb@${authur-register}:8001/register/eureka/
 #网管相关
-zuul:
-  routes:
-    auth:
-      path: /auth/**
-      serviceId: Authur-Auth
-      sensitiveHeaders: "*"
-    system:
-      path: /system/**
-      serviceId: Authur-Server-System
-      sensitiveHeaders: "*"
-    test:
-      path: /test/**
-      serviceId: Authur-Server-Test
-      sensitiveHeaders: "*"
-  retryable: true
-  ignored-services: "*"
-  ribbon:
-    eager-load:
-      enabled: true
-#请求超时
-ribbon:
-  ReadTimeout: 3000
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+  cloud:
+    gateway:
+      routes:
+        - id: Authur-Auth
+          uri: lb://Authur-Auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - name: Hystrix
+              args:
+                name: authfallback
+                fallbackUri: forward:/fallback/Authur-Auth
+        - id: Authur-Server-System
+          uri: lb://Authur-Server-System
+          predicates:
+            - Path=/system/**
+          filters:
+            - name: Hystrix
+              args:
+                name: systemfallback
+                fallbackUri: forward:/fallback/Authur-Server-System
+        - id: Authur-Server-Test
+          uri: lb://Authur-Server-Test
+          predicates:
+            - Path=/test/**
+          filters:
+            - name: Hystrix
+              args:
+                name: testfallback
+                fallbackUri: forward:/fallback/Authur-Server-Test
+      default-filters:
+        - StripPrefix=1
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
