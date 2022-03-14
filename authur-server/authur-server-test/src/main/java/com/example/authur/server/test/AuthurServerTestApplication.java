@@ -16,7 +16,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
  * @Date: 2021/11/2 17:22
  */
 @EnableFeignClients
-@EnableDiscoveryClient
 @SpringBootApplication
 @AuthurCloudApplication
 @EnableGlobalMethodSecurity(prePostEnabled = true)

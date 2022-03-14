@@ -38,6 +38,11 @@ spring:
         url: http://${authur-monitor-admin}:8401
         username: Authur
         password: ljb
+  #nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.url}:8008
 #监控相关
 info:
   app:
@@ -53,16 +58,6 @@ management:
     health:
       show-details: always
 
-eureka:
-  instance:
-    lease-renewal-interval-in-seconds: 20
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    instance-info-replication-interval-seconds: 30
-    registry-fetch-interval-seconds: 3
-    serviceUrl:
-      defaultZone: http://Authur:ljb@${authur-register}:8001/register/eureka/
 mybatis-plus:
   type-aliases-package: com.example.authur.common.entity
   mapper-locations: classpath:mapper/*.xml

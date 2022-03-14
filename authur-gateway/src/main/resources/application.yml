@@ -1,6 +1,11 @@
 server:
   port: 8301
 spring:
+  #nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.url}:8008
   application:
     name: Authur-Gateway
   boot: #监控相关
@@ -10,17 +15,6 @@ spring:
         username: Authur
         password: ljb
 
-#Eureka相关
-eureka:
-  instance:
-    lease-renewal-interval-in-seconds: 20
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    instance-info-replication-interval-seconds: 30
-    registry-fetch-interval-seconds: 3
-    serviceUrl:
-      defaultZone: http://Authur:ljb@${authur-register}:8001/register/eureka/
 #网管相关
 management:
   endpoint:

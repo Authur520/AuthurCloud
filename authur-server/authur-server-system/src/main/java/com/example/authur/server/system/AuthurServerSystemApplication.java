@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @Date: 2021/11/2 17:22
  */
 @EnableFeignClients
-@EnableDiscoveryClient
 @SpringBootApplication
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableAuthurServerProtect
