@@ -48,6 +48,11 @@
             <artifactId>logstash-logback-encoder</artifactId>
             <version>6.1</version>
         </dependency>
+<!--        nacos-config-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

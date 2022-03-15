@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: Authur-Gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.url}:8008
+      config:
+        server-addr: ${nacos.url}:8008
+        group: DEFAULT_GROUP
+        prefix: authur-gateway
+        file-extension: yaml
