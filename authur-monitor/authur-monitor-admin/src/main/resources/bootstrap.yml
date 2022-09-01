@@ -10,3 +10,12 @@ spring:
         group: DEFAULT_GROUP
         prefix: authur-monitor-admin
         file-extension: yaml
+#控制台不打印配置文件
+logging:
+  level:
+    com:
+      alibaba:
+        cloud:
+          nacos:
+            client:
+              NacosPropertySourceBuilder: error

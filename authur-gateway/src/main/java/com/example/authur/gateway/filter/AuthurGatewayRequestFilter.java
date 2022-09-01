@@ -102,7 +102,7 @@ public class AuthurGatewayRequestFilter implements GlobalFilter {
 
     private Mono<Void> makeResponse(ServerHttpResponse response, AuthurResponse authurResponse) {
         response.setStatusCode(HttpStatus.FORBIDDEN);
-        response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE);
+        response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         DataBuffer dataBuffer = response.bufferFactory().wrap(JSONObject.toJSONString(authurResponse).getBytes());
         return response.writeWith(Mono.just(dataBuffer));
     }

@@ -23,7 +23,7 @@ public class AuthurAuthExceptionEntryPoint implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
         AuthurResponse authurResponse = new AuthurResponse();
         AuthurUtils.makeResponse(response,
-                MediaType.APPLICATION_JSON_UTF8_VALUE,
+                MediaType.APPLICATION_JSON_VALUE,
                 HttpServletResponse.SC_UNAUTHORIZED,
                 authurResponse.message("token无效"));
     }

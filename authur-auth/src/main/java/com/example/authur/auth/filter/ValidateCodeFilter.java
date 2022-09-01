@@ -48,7 +48,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
                 filterChain.doFilter(httpServletRequest, httpServletResponse);
             } catch (ValidateCodeException e) {
                 AuthurResponse authurResponse = new AuthurResponse();
-                AuthurUtils.makeResponse(httpServletResponse, MediaType.APPLICATION_JSON_UTF8_VALUE, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, authurResponse.message(e.getMessage()));
+                AuthurUtils.makeResponse(httpServletResponse, MediaType.APPLICATION_JSON_VALUE, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, authurResponse.message(e.getMessage()));
                 log.error(e.getMessage(), e);
             }
         }else {

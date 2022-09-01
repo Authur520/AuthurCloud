@@ -29,7 +29,7 @@ public class AuthurServerProtectInterceptor implements HandlerInterceptor {
             return true;
         }else {
             AuthurResponse authurResponse = new AuthurResponse();
-            response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             response.getWriter().write(JSONObject.toJSONString(authurResponse.message("请通过网关获取资源")));
             return false;

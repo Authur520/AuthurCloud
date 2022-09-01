@@ -21,7 +21,7 @@ public class AuthurAccessDeniedHandler implements AccessDeniedHandler {
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
         AuthurResponse response = new AuthurResponse();
         AuthurUtils.makeResponse(httpServletResponse,
-                MediaType.APPLICATION_JSON_UTF8_VALUE,
+                MediaType.APPLICATION_JSON_VALUE,
                 HttpServletResponse.SC_FORBIDDEN,
                 response.message("没有权限访问该资源"));
     }
