@@ -1,5 +1,9 @@
 package com.example.authur.server.test;
 
+import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.common.message.Message;
+import org.apache.rocketmq.remoting.common.RemotingHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,4 +45,30 @@ public class TestController {
     public String hello(String name){
         return this.iHelloService.hello(name);
     }
+
+
+    //测试RocketMQ
+    public static void main(String[] args) throws Exception {
+        //Instantiate with a producer group name.
+        DefaultMQProducer producer = new
+                DefaultMQProducer("please_rename_unique_group_name");
+        // Specify name server addresses.
+        producer.setNamesrvAddr("81.70.92.153:9876");
+        //Launch the instance.
+        producer.start();
+        for (int i = 0; i < 100; i++) {
+            //Create a message instance, specifying topic, tag and message body.
+            Message msg = new Message("TopicTest" /* Topic */,
+                    "TagA" /* Tag */,
+                    ("Hello RocketMQ " +
+                            i).getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
+            );
+            //Call send message to deliver message to one of brokers.
+            SendResult sendResult = producer.send(msg);
+            System.out.printf("%s%n", sendResult);
+        }
+        //Shut down once the producer instance is not longer in use.
+        producer.shutdown();
+    }
+
 }

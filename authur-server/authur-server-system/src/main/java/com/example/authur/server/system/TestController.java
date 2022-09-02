@@ -1,5 +1,8 @@
 package com.example.authur.server.system;
 
+import com.example.authur.common.entity.system.TradeLog;
+import com.example.authur.server.system.service.ITradeLogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +17,10 @@ import java.util.concurrent.Executors;
  */
 @RestController
 public class TestController {
+
+    @Autowired
+    ITradeLogService iTradeLogService;
+
     @GetMapping("info")
     public String test(){
         return "authur-server-system";
@@ -29,6 +36,10 @@ public class TestController {
         return "hello" + name;
     }
 
+    @GetMapping("pay")
+    public void pay(TradeLog tradeLog){
+        iTradeLogService.orderAndPay(tradeLog);
+    }
 
     public static void main(String[] args) {
 //        ExecutorService threadPool = Executors.newSingleThreadExecutor();
