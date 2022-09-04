@@ -41,25 +41,25 @@ public class TestController {
         iTradeLogService.orderAndPay(tradeLog);
     }
 
-    public static void main(String[] args) {
-//        ExecutorService threadPool = Executors.newSingleThreadExecutor();
-//        ExecutorService threadPool = Executors.newFixedThreadPool(5);
-        ExecutorService threadPool = Executors.newCachedThreadPool();
-        try{
-            for (int i = 0; i < 100; i++) {
-                threadPool.execute(() ->{
-                    System.out.println(Thread.currentThread().getName() + "    ok");
-                });
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            threadPool.shutdown();
-        }
-
-
-
-    }
+//    public static void main(String[] args) {
+////        ExecutorService threadPool = Executors.newSingleThreadExecutor();
+////        ExecutorService threadPool = Executors.newFixedThreadPool(5);
+//        ExecutorService threadPool = Executors.newCachedThreadPool();
+//        try{
+//            for (int i = 0; i < 100; i++) {
+//                threadPool.execute(() ->{
+//                    System.out.println(Thread.currentThread().getName() + "    ok");
+//                });
+//            }
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }finally {
+//            threadPool.shutdown();
+//        }
+//
+//
+//
+//    }
     
 
 }
