@@ -10,4 +10,6 @@ import com.example.authur.common.entity.system.TradeLog;
  */
 public interface ITradeLogService extends IService<TradeLog> {
     void orderAndPay(TradeLog tradeLog);
+
+    void pay(TradeLog tradeLog, String transactionId);
 }

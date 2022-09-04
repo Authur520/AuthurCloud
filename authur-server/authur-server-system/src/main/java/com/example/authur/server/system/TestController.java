@@ -37,8 +37,9 @@ public class TestController {
     }
 
     @GetMapping("pay")
-    public void pay(TradeLog tradeLog){
+    public String pay(TradeLog tradeLog){
         iTradeLogService.orderAndPay(tradeLog);
+        return "200";
     }
 
 //    public static void main(String[] args) {
