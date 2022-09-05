@@ -1,7 +1,0 @@
-server:
-  port: 8203
-  servlet:
-    context-path: /authur-temple
-spring:
-  application:
-    name: authur-temple

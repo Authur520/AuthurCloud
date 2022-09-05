@@ -18,6 +18,7 @@
     <modules>
         <module>authur-server-system</module>
         <module>authur-server-test</module>
+        <module>authur-server-template</module>
     </modules>
 
     <dependencies>

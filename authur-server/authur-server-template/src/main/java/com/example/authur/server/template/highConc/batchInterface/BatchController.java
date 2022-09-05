@@ -23,16 +23,15 @@ public class BatchController {
 
     @RequestMapping("/getUser")
     public void getUser() throws ExecutionException, InterruptedException {
-        CountDownLatch countDownLatch = new CountDownLatch(1000);
-        for (int i = 0; i < 1000; i++) {
+        CountDownLatch countDownLatch = new CountDownLatch(10000);
+        for (int i = 0; i < 10000; i++) {
             final String id = String.valueOf(100 + i);
             Thread thread = new Thread(() -> {
                 try {
                     countDownLatch.countDown();
                     countDownLatch.await();
                     Map<String, Object> map = batchService.queryBatch(id);
-                    System.out.println("���" +
-                            "��" + map);
+//                    System.out.println("接口返回结果"+ map);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

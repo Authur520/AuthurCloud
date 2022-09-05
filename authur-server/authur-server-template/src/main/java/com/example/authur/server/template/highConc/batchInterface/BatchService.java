@@ -30,7 +30,7 @@ public class BatchService {
         request.id = id ;
         request.future = future;
         queue.add(request);
-        System.out.println(future.get());
+//        System.out.println("查询结果返回"+future.get());
         return future.get();
     }
 
