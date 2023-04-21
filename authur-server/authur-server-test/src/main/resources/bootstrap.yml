@@ -1,15 +1,15 @@
-spring:
-  application:
-    name: Authur-Server-Test
-  cloud:
-    nacos:
-      discovery:
-        server-addr: ${nacos.url}:8008
-      config:
-        server-addr: ${nacos.url}:8008
-        group: DEFAULT_GROUP
-        prefix: authur-server-test
-        file-extension: yaml
-logging:
-  level:
-    com.alibaba.nacos.client: error
+#spring:
+#  application:
+#    name: Authur-Server-Test
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: ${nacos.url}:8008
+#      config:
+#        server-addr: ${nacos.url}:8008
+#        group: DEFAULT_GROUP
+#        prefix: authur-server-test
+#        file-extension: yaml
+#logging:
+#  level:
+#    com.alibaba.nacos.client: error
