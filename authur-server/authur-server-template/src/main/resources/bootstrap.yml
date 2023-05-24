@@ -1,12 +1,12 @@
 spring:
   application:
-    name: Authur-Server-Template
+    name: Authur-Server-TemplateAuthur-Server-Template
   cloud:
     nacos:
       discovery:
-        server-addr: ${nacos.url}:8008
+        server-addr: ${nacos.url}:8008${nacos.url}:8008
       config:
-        server-addr: ${nacos.url}:8008
+        server-addr: ${nacos.url}:8008${nacos.url}:8008
         group: DEFAULT_GROUP
         prefix: authur-server-template
         file-extension: yaml
