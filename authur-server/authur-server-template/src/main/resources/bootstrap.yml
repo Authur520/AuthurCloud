@@ -11,6 +11,7 @@ spring:
         prefix: authur-server-template
         file-extension: yaml
 server:
+  port: 8203
   servlet:
     context-path: /authur-temple
 logging:
