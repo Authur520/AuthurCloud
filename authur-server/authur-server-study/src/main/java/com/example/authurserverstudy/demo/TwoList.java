@@ -29,6 +29,8 @@ public class TwoList {
                         item1.getId().equals(item2.getId()))
         ).collect(Collectors.toList());
         System.out.println(collect);
+        System.out.println(collect);
+        System.out.println(collect);
 
     }
 }
